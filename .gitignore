@@ -1,0 +1,5 @@
+node_modules/
+public/
+server.js
+.sass-cache/
+sass/lib/*

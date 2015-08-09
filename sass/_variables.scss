@@ -1,0 +1,29 @@
+// --------------------------------
+// GLOBAL VARIABLES
+// --------------------------------
+
+
+// global greys
+$color-black            : #4a4a4a !default;
+$color-grey             : #999999 !default; // usually for text
+$color-grey-medium      : #d8d8d8 !default; // borders for box
+$color-grey-lightest    : #f8f7f8 !default; // box background grey
+$color-grey-back        : #fefefe !default; // #F6F5F7 !default; // background grey
+$color-sec              : #279AE2 !default;
+
+
+
+// real white & black
+$color-real-white       : #ffffff !default;
+$radius-medium          : 4px !default;
+$radius-large           : 8px !default;
+
+// text
+$font-family-base       : 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-size-base         : 16px !default;
+
+// component sizing
+$font-size-largest      : $font-size-base * 2.5 !default;
+
+// modals & others
+$modal-background-color: rgba(24,24,24,.60) !default;

@@ -2,7 +2,6 @@
  * Modalblanc
  */
 Modalblanc = function() {
-    "use strict";
     if (!(this instanceof Modalblanc)) {
         return new Modalblanc();
     };

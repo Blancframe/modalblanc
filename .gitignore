@@ -3,3 +3,5 @@ public/
 server.js
 .sass-cache/
 sass/lib/*
+*.map
+npm-debug.log

@@ -13,8 +13,14 @@ Modalblanc = function() {
         animation: 'fade-in-out',
         closeButton: true,
         content: '',
-        overlay: true
+        sideTwo: {
+            content: null,
+            button: null,
+            buttonBack: null
+        },
     };
+
+    this.settings = {};
 
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = extendDefault(defaults, arguments[0]);
@@ -23,12 +29,17 @@ Modalblanc = function() {
 };
 
 Modalblanc.prototype.open = function() {
+    if (this.settings.modalOpen) return;
+
     build.call(this);
     setEvents.call(this);
 }
 
 Modalblanc.prototype.close = function() {
-    var overlay = document.getElementById('overlay-modal-blanc');
+    if (!this.settings.modalOpen) return;
+
+    var overlay = document.getElementById('overlay-modal-blanc'),
+        _this = this;
 
     overlay.classList.remove('is-active');
     overlay.classList.add('is-inactive');
@@ -37,7 +48,14 @@ Modalblanc.prototype.close = function() {
 
     overlay.addEventListener(transPrefix.end, function() {
         this.remove();
+        _this.settings['modalOpen'] = false;
     }, false );
+}
+
+Modalblanc.prototype._contentNext = function() {
+	var card = document.getElementById('card');
+
+	card.classList.add('flipped');
 }
 
 function transitionPrefix(elm) {
@@ -56,51 +74,50 @@ function transitionPrefix(elm) {
 }
 
 function setEvents() {
-    var overlay = document.getElementById('overlay-modal-blanc'),
-        close = document.getElementById('close-modal-blanc');
+    var nextButton = document.getElementById('modal-button-next'),
+    	closed = document.getElementsByClassName('modal-fullscreen-close'),
+		_this = this;
 
-    if (this.closeButton) {
-        close.addEventListener('click', this.close.bind(this));
-    }
+	this.classEventListener(closed, function() {
+		_this.close();
+	});
 
-    if (this.overlay) {
-        overlay.addEventListener('click', this.close.bind(this));
-    }
+    if (this.options.sideTwo.content === null) return;
 
+    nextButton.addEventListener('click', this._contentNext.bind(this));
+}
+
+Modalblanc.prototype.classEventListener = function(elm, callback) {
+	var _this = this;
+
+	for (i = 0; i < elm.length; i++) {
+	    elm[i].addEventListener('click', function() {
+            callback();
+	    });
+	}
 }
 
 function build() {
-    var content;
-
-    if (typeof this.options.content === 'string') {
-        content = this.options.content
-    } else {
-        content = this.options.content.innerHTML;
-    }
-
     if (this.options.closeButton === true) {
-        this.closeButton = '<span class="modal-fullscreen-close" id="close-modal-blanc">X</span>'
+        this.closeButton = '<span class="modal-fullscreen-close">X</span>'
     } else {
         this.closeButton = '';
     }
 
-    if (this.options.overlay === true) {
-        this.overlay = 'style="background: rbga(255,255,255, 0);"';
-    } else {
-        this.overlay = '';
-    }
-
-    var tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active"'+ this.overlay + '>' +
+    var tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
                     '<div class="modal-fullscreen-container big-modal">' +
                         '<div id="card">'+
-                            this.closeButton +
                             '<div class="front">' +
-                                '<div class="modal-fullscreen-item">' + 
-                                content +
+                                '<div id="front-card" class="modal-fullscreen-item">' + 
+                                    this.closeButton +
+                                    contentType(this.options.content) +
                                 '</div>'+
                             '</div>' +
                             '<div class="back">' +
-                                '<div class="modal-fullscreen-item"></div>' +
+                                '<div  id="back-card" class="modal-fullscreen-item">' +
+                                    this.closeButton +
+                                    contentType(this.options.sideTwo.content) +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
@@ -116,9 +133,47 @@ function build() {
     }
 
     stringAsNode(document.getElementById(modalId), tmpl);
+    this.settings['modalOpen'] = true;
+    
+    if (this.options.sideTwo.content === null) return;
+
+    stringAsNode(document.getElementById('front-card'), buildButton(this.options.sideTwo.button));
+    // stringAsNode(document.getElementById('back-card') ,this.options.sideTwo.buttonBack);
 }
 
+
+function buildButton(elm) {
+    var button;
+
+    if (elm === null || elm === undefined) {
+      switch(elm) {
+        case undefined:
+          button = '<a id="modal-button-next">next step</a>';
+        break;
+        case null:
+          button = '<a id="modal-button-next">next step</a>';
+        break;
+      }
+    } else {
+      return
+    }
+
+    return button;
+}
+
+function contentType(contentValue) {
+    if (typeof contentValue === 'string') {
+        return contentValue
+    } else if (contentValue === null) {
+        return '';
+    } else {
+        return contentValue.innerHTML;
+    }
+} 
+
 function stringAsNode(element, html) {
+    if (html === null) return;
+
     var frag = document.createDocumentFragment(),
         tmp = document.createElement('body'),
         child;

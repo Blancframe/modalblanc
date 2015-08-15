@@ -1,6 +1,6 @@
 {
   "name": "modalblanc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simpel modal",
   "main": "index.js",
   "dependencies": {},

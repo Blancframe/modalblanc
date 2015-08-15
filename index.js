@@ -49,13 +49,21 @@ Modalblanc.prototype.close = function() {
     overlay.addEventListener(transPrefix.end, function() {
         this.remove();
         _this.settings['modalOpen'] = false;
-    }, false );
+    }, false);
 }
 
 Modalblanc.prototype._contentNext = function() {
 	var card = document.getElementById('card');
 
-	card.classList.add('flipped');
+    card.classList.remove('slide-back');
+	card.classList.add('slide-next');
+}
+
+Modalblanc.prototype._contentPrevious = function() {
+    var card = document.getElementById('card');
+
+    card.classList.remove('slide-next');
+    card.classList.add('slide-back');
 }
 
 function transitionPrefix(elm) {
@@ -75,6 +83,7 @@ function transitionPrefix(elm) {
 
 function setEvents() {
     var nextButton = document.getElementById('modal-button-next'),
+        prevButton = document.getElementById('modal-button-prev'),
     	closed = document.getElementsByClassName('modal-fullscreen-close'),
 		_this = this;
 
@@ -85,6 +94,7 @@ function setEvents() {
     if (this.options.sideTwo.content === null) return;
 
     nextButton.addEventListener('click', this._contentNext.bind(this));
+    prevButton.addEventListener('click', this._contentPrevious.bind(this));
 }
 
 Modalblanc.prototype.classEventListener = function(elm, callback) {
@@ -105,7 +115,7 @@ function build() {
     }
 
     var tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
-                    '<div class="modal-fullscreen-container big-modal">' +
+                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container big-modal">' +
                         '<div id="card">'+
                             '<div class="front">' +
                                 '<div id="front-card" class="modal-fullscreen-item">' + 
@@ -137,28 +147,56 @@ function build() {
     
     if (this.options.sideTwo.content === null) return;
 
-    stringAsNode(document.getElementById('front-card'), buildButton(this.options.sideTwo.button));
-    // stringAsNode(document.getElementById('back-card') ,this.options.sideTwo.buttonBack);
+    buildButton(this.options.sideTwo.button);
+    buildButton(this.options.sideTwo.buttonBack, 'back');
+}
+
+function buildElement(buildOptions) {
+    var createElm,
+        parentElm;
+
+    createElm = document.createElement(buildOptions.elm);
+    createElm.id = buildOptions.buttonId;
+    createElm.innerHTML = buildOptions.buttonText;
+    parentElm = document.getElementById(buildOptions.parentId);
+
+    parentElm.appendChild(createElm);
 }
 
 
 function buildButton(elm) {
-    var button;
+    var button,
+        computedButton,
+        computedButtonBack,
+        frontCard,
+        backCard;
 
     if (elm === null || elm === undefined) {
-      switch(elm) {
-        case undefined:
-          button = '<a id="modal-button-next">next step</a>';
-        break;
-        case null:
-          button = '<a id="modal-button-next">next step</a>';
-        break;
-      }
-    } else {
-      return
-    }
+        if (document.getElementById('modal-button-next') || document.getElementById('modal-button-prev')) {
+            return
+        } else {
+            buildElement({
+                elm: 'a',
+                buttonId: 'modal-button-next',
+                buttonText: 'Next computed step',
+                parentId: 'front-card'
+            });
 
-    return button;
+            buildElement({
+                elm: 'a',
+                buttonId: 'modal-button-prev',
+                buttonText: 'Previous computed step',
+                parentId: 'back-card'
+            });
+        }
+    } else {
+        buildElement({
+            elm: elm.element,
+            buttonId: elm.id,
+            buttonText: elm.text,
+            parentId: elm.parent,
+        });
+    }
 }
 
 function contentType(contentValue) {

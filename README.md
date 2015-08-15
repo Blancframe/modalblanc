@@ -1,7 +1,7 @@
 # modalblanc
 Simple Modalbox 
 
-### Getting stared
+### Getting started
 
 **Add script to head or to bottom of body.**
 
@@ -37,6 +37,11 @@ var modal = new Modalblanc({
     content: <h1>Hello world</h1>,
     animation: 'slide-in-right',
     closeButton: false,
+    sideTwo: {
+        content: '<h2>Hello universe!</h2>',
+        button: {element: 'a', text: 'Next step!!', type: 'nextStep', id: 'modal-button-next', parent: 'front-card'},
+        buttonBack: {element: 'a', text: 'GO BACK!!', type: 'prevStep', id: 'modal-button-prev', parent: 'back-card'}
+    }
 });
 
 modal.open();
@@ -52,3 +57,13 @@ modal.close();
 
 * **closeButton** (Boolean - default=true)
 > Show or hide the close button
+
+* **sideTwo: content** (String - default=null)
+> Displays your content on the backside of the modal
+
+* **sideTwo: button** (Object - default=null)
+> Custom elements (a, button, li e.g.) `id` always have to be `modal-button-next` and `parent` always `front-card`. Fix this on short term.
+
+* **sideTwo: buttonBack** (Object - default=null)
+> Custom elements (a, button, li e.g.) `id` always have to be `modal-button-prev` and `parent` always `back-card`. Fix this on short term.
+

@@ -19,6 +19,11 @@ Simple Modalbox
         content: <h1>Hello world</h1>,
         animation: 'slide-in-right',
         closeButton: false,
+        sideTwo: {
+            content: '<h2>Hello universe!</h2>',
+            button: {element: 'a', text: 'Next step!!', type: 'nextStep', id: 'modal-button-next', parent: 'front-card'},
+            buttonBack: {element: 'a', text: 'GO BACK!!', type: 'prevStep', id: 'modal-button-prev', parent: 'back-card'}
+        }
     });
     
     modal.open();

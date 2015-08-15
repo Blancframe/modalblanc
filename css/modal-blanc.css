@@ -1883,40 +1883,6 @@ html {
           width: 45%;
           height: 100%;
           border-bottom: solid 1px #d8d8d8; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content.got-header {
-        border-radius: 0 0 8px 8px; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content .donate-btn, .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content .payment-btn {
-        margin-top: 30px;
-        width: auto; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content.got-profile-picture {
-        min-height: 350px;
-        padding-top: 45px;
-        background: #ffffff;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        border-radius: 5px; }
-        .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content.got-profile-picture h4 {
-          margin-bottom: 30px;
-          margin-top: -5px;
-          text-align: center;
-          font-size: 40px;
-          font-size: 36px;
-          color: #4a4a4a; }
-        .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content.got-profile-picture .top-icon {
-          position: absolute;
-          left: 50%;
-          top: -40px;
-          margin: 0px -40px;
-          height: 73px;
-          width: 73px;
-          background-color: #ffffff;
-          border: 6px solid #f8f7f8;
-          border-radius: 50%;
-          padding: 2px;
-          overflow: hidden; }
-          .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-content.got-profile-picture .top-icon img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%; }
     .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-close {
       position: absolute;
       display: block;
@@ -1937,28 +1903,6 @@ html {
       cursor: pointer; }
       .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-back .modal-close-image {
         pointer-events: none; }
-    .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-profile {
-      text-align: left;
-      overflow: auto;
-      font-size: 13px;
-      line-height: 18px;
-      margin: 0 0 19px 0;
-      padding: 5px 9px; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-profile .photo {
-        float: left;
-        height: 51px;
-        width: 51px;
-        border-radius: 50%;
-        display: inline-block;
-        overflow: hidden;
-        margin-right: 15px;
-        border: solid 2px #fff;
-        vertical-align: middle; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-profile .already-registerd {
-        float: right;
-        width: 74%;
-        display: inline-block;
-        margin-right: 10px; }
     .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer {
       padding: 10px 10px 5px 10px;
       font-size: 15px; }
@@ -2001,22 +1945,6 @@ html {
         font-weight: 700; }
       .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer.no-content {
         padding: 0; }
-      .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer .modal-payment-provider {
-        font-size: 13px;
-        color: #9F9F9F; }
-        .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer .modal-payment-provider span {
-          position: relative;
-          padding-left: 17px; }
-          .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer .modal-payment-provider span:before {
-            position: absolute;
-            content: '';
-            left: 0;
-            top: 0;
-            width: 10px;
-            height: 13px; }
-        .modal-fullscreen-container .modal-fullscreen-item .modal-fullscreen-footer .modal-payment-provider a {
-          color: #9F9F9F;
-          text-decoration: underline; }
     .modal-fullscreen-container .modal-fullscreen-item .modal-future-donation {
       position: relative;
       margin: auto;
@@ -2047,6 +1975,70 @@ html {
       height: 100%;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden; }
+    .modal-fullscreen-container #card.slide-next .front {
+      background: transparent;
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-animation: slideOutLeft 0.2s ease-in;
+      -moz-animation: slideOutLeft 0.2s ease-in;
+      -o-animation: slideOutLeft 0.2s ease-in;
+      animation: slideOutLeft 0.2s ease-in;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 0; }
+    .modal-fullscreen-container #card.slide-next .back {
+      background: transparent;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+      -webkit-animation: slideInRight 0.3s ease-out;
+      -moz-animation: slideInRight 0.3s ease-out;
+      -o-animation: slideInRight 0.3s ease-out;
+      animation: slideInRight 0.3s ease-out;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 1; }
+    .modal-fullscreen-container #card.slide-back .front {
+      background: transparent;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+      -webkit-animation: slideInLeft 0.3s ease-out;
+      -moz-animation: slideInLeft 0.3s ease-out;
+      -o-animation: slideInLeft 0.3s ease-out;
+      animation: slideInLeft 0.3s ease-out;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 1; }
+    .modal-fullscreen-container #card.slide-back .back {
+      background: transparent;
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-animation: slideOutRight 0.2s ease-in;
+      -moz-animation: slideOutRight 0.2s ease-in;
+      -o-animation: slideOutRight 0.2s ease-in;
+      animation: slideOutRight 0.2s ease-in;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 0; }
     .modal-fullscreen-container #card .front {
       background: transparent;
       -webkit-transform: rotateY(0deg);

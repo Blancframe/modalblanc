@@ -60,7 +60,7 @@ modal.close();
 > Displays your content in the modal
 
 * **animation** (String - default=fade-in-out)
-> Type of animation
+> Type of animation (fade-in-out, slide-in-right)
 
 * **closeButton** (Boolean - default=true)
 > Show or hide the close button
@@ -69,7 +69,7 @@ modal.close();
 > Displays your content on the backside of the modal
 
 * **sideTwo: animation** (String - default=slide)
-> Type of modal content animation
+> Type of modal content animation (slide, scale)
 
 * **sideTwo: button** (Object - default=null)
 > Custom elements (a, button, li e.g.) `id` always have to be `modal-button-next` and `parent` always `front-card`. Fix this on short term.

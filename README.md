@@ -21,6 +21,7 @@ Simple Modalbox
         closeButton: false,
         sideTwo: {
             content: '<h2>Hello universe!</h2>',
+            animation: 'scale',
             button: {element: 'a', text: 'Next step!!', type: 'nextStep', id: 'modal-button-next', parent: 'front-card'},
             buttonBack: {element: 'a', text: 'GO BACK!!', type: 'prevStep', id: 'modal-button-prev', parent: 'back-card'}
         }
@@ -44,6 +45,7 @@ var modal = new Modalblanc({
     closeButton: false,
     sideTwo: {
         content: '<h2>Hello universe!</h2>',
+        animation: 'scale',
         button: {element: 'a', text: 'Next step!!', type: 'nextStep', id: 'modal-button-next', parent: 'front-card'},
         buttonBack: {element: 'a', text: 'GO BACK!!', type: 'prevStep', id: 'modal-button-prev', parent: 'back-card'}
     }
@@ -65,6 +67,9 @@ modal.close();
 
 * **sideTwo: content** (String - default=null)
 > Displays your content on the backside of the modal
+
+* **sideTwo: animation** (String - default=slide)
+> Type of modal content animation
 
 * **sideTwo: button** (Object - default=null)
 > Custom elements (a, button, li e.g.) `id` always have to be `modal-button-next` and `parent` always `front-card`. Fix this on short term.

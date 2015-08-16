@@ -1576,6 +1576,74 @@ html {
     transform: scale(0);
     opacity: 0;
     filter: alpha(opacity=0); } }
+@-webkit-keyframes scaleBackBack {
+  0% {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+@-moz-keyframes scaleBackBack {
+  0% {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+@-o-keyframes scaleBackBack {
+  0% {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+@keyframes scaleBackBack {
+  0% {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); } }
 @-webkit-keyframes scaleUp {
   0% {
     -webkit-transform: scale(1);
@@ -2039,60 +2107,70 @@ html {
       -webkit-animation-fill-mode: forwards;
       animation-fill-mode: forwards;
       z-index: 0; }
-    .modal-fullscreen-container #card .front {
+    .modal-fullscreen-container #card.scale-next .front {
       background: transparent;
       -webkit-transform: rotateY(0deg);
       -moz-transform: rotateY(0deg);
       -ms-transform: rotateY(0deg);
       -o-transform: rotateY(0deg);
-      transform: rotateY(0deg); }
-      .modal-fullscreen-container #card .front.slide-in-left {
-        -webkit-animation: slideInLeft 0.3s ease-out;
-        -moz-animation: slideInLeft 0.3s ease-out;
-        -o-animation: slideInLeft 0.3s ease-out;
-        animation: slideInLeft 0.3s ease-out;
-        -o-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        z-index: 1; }
-      .modal-fullscreen-container #card .front.slide-out-left {
-        -webkit-animation: slideOutLeft 0.2s ease-in;
-        -moz-animation: slideOutLeft 0.2s ease-in;
-        -o-animation: slideOutLeft 0.2s ease-in;
-        animation: slideOutLeft 0.2s ease-in;
-        -o-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        z-index: 0; }
-      .modal-fullscreen-container #card .front.scale-back {
-        -webkit-animation: scaleBack 0.2s ease-in;
-        -moz-animation: scaleBack 0.2s ease-in;
-        -o-animation: scaleBack 0.2s ease-in;
-        animation: scaleBack 0.2s ease-in;
-        -o-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards; }
-      .modal-fullscreen-container #card .front.scale-up {
-        -webkit-animation: scaleUp 0.3s ease-in;
-        -moz-animation: scaleUp 0.3s ease-in;
-        -o-animation: scaleUp 0.3s ease-in;
-        animation: scaleUp 0.3s ease-in;
-        -o-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards; }
-      .modal-fullscreen-container #card .front.scale-down {
-        -webkit-animation: scaleDown 0.3s ease-out 0.1s;
-        -moz-animation: scaleDown 0.3s ease-out 0.1s;
-        -o-animation: scaleDown 0.3s ease-out 0.1s;
-        animation: scaleDown 0.3s ease-out 0.1s;
-        -o-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards; }
+      transform: rotateY(0deg);
+      -webkit-animation: scaleBack 0.2s ease-in;
+      -moz-animation: scaleBack 0.2s ease-in;
+      -o-animation: scaleBack 0.2s ease-in;
+      animation: scaleBack 0.2s ease-in;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 0; }
+    .modal-fullscreen-container #card.scale-next .back {
+      background: transparent;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+      -webkit-animation: scaleDown 0.3s ease-out 0.1s;
+      -moz-animation: scaleDown 0.3s ease-out 0.1s;
+      -o-animation: scaleDown 0.3s ease-out 0.1s;
+      animation: scaleDown 0.3s ease-out 0.1s;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 1; }
+    .modal-fullscreen-container #card.scale-back .front {
+      background: transparent;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+      -webkit-animation: scaleBackBack 0.2s ease-in;
+      -moz-animation: scaleBackBack 0.2s ease-in;
+      -o-animation: scaleBackBack 0.2s ease-in;
+      animation: scaleBackBack 0.2s ease-in;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 1; }
+    .modal-fullscreen-container #card.scale-back .back {
+      background: transparent;
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-animation: scaleUp 0.2s ease-in;
+      -moz-animation: scaleUp 0.2s ease-in;
+      -o-animation: scaleUp 0.2s ease-in;
+      animation: scaleUp 0.2s ease-in;
+      -o-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      z-index: 0; }
     .modal-fullscreen-container #card .back {
       background: transparent;
       -webkit-transform: rotateY(180deg);

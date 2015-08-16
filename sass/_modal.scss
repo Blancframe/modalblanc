@@ -322,35 +322,39 @@
             }
         }
 
-        .front {
-            background: transparent;
-            @include transform(rotateY(0deg));
-
-            &.slide-in-left {
-                @include animation(slideInLeft .3s ease-out);
-                @include animation-fill-mode(forwards);
-                z-index: 1;
-            }
-
-            &.slide-out-left {
-                @include animation(slideOutLeft .2s ease-in);
+        &.scale-next {
+            .front {
+                background: transparent;
+                @include transform(rotateY(0deg));
+                @include animation(scaleBack .2s ease-in);
                 @include animation-fill-mode(forwards);
                 z-index: 0;
             }
 
-            &.scale-back {
-                @include animation(scaleBack .2s ease-in);
-                @include animation-fill-mode(forwards);
-            }
-
-            &.scale-up {
-                @include animation(scaleUp .3s ease-in);
-                @include animation-fill-mode(forwards);
-            }
-
-            &.scale-down {
+            .back {
+                background: transparent;
+                @include transform(rotateY(180deg));
                 @include animation(scaleDown .3s ease-out .1s);
                 @include animation-fill-mode(forwards);
+                z-index: 1;
+            }
+        }
+
+        &.scale-back {
+            .front {
+                background: transparent;
+                @include transform(rotateY(180deg));
+                @include animation(scaleBackBack .2s ease-in);
+                @include animation-fill-mode(forwards);
+                z-index: 1;
+            }
+
+            .back {
+                background: transparent;
+                @include transform(rotateY(0deg));
+                @include animation(scaleUp .2s ease-in);
+                @include animation-fill-mode(forwards);
+                z-index: 0;
             }
         }
 

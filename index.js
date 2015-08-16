@@ -15,6 +15,7 @@ Modalblanc = function() {
         content: '',
         sideTwo: {
             content: null,
+            animation: null,
             button: null,
             buttonBack: null
         },
@@ -53,17 +54,49 @@ Modalblanc.prototype.close = function() {
 }
 
 Modalblanc.prototype._contentNext = function() {
-	var card = document.getElementById('card');
+	var card = document.getElementById('card'),
+        customClass = this.options.sideTwo.animation;
 
-    card.classList.remove('slide-back');
-	card.classList.add('slide-next');
+    card.classList.remove(typeOfAnimation(customClass, 2));
+	card.classList.add(typeOfAnimation(customClass));
 }
 
 Modalblanc.prototype._contentPrevious = function() {
-    var card = document.getElementById('card');
+    var card = document.getElementById('card'),
+        customClass = this.options.sideTwo.animation;
 
-    card.classList.remove('slide-next');
-    card.classList.add('slide-back');
+    card.classList.remove(typeOfAnimation(customClass));
+    card.classList.add(typeOfAnimation(customClass, 2));
+}
+
+Modalblanc.prototype.classEventListener = function(elm, callback) {
+    var _this = this;
+
+    for (i = 0; i < elm.length; i++) {
+        elm[i].addEventListener('click', function() {
+            callback();
+        });
+    }
+}
+
+function typeOfAnimation(type, typeClass) {
+    var animationTypes = {
+            'slide': ['slide-next', 'slide-back'],
+            'scale': ['scale-next', 'scale-back']
+        },
+        animationClass = animationTypes[type];
+        
+        if (type === undefined) { 
+            if (typeClass === 2) {
+                return animationTypes.slide[1];
+            } else {
+                return animationTypes.slide[0];
+            }
+        } else if (typeClass === 2) {
+            return animationClass[1];
+        } else {
+            return animationClass[0];
+        }
 }
 
 function transitionPrefix(elm) {
@@ -95,16 +128,6 @@ function setEvents() {
 
     nextButton.addEventListener('click', this._contentNext.bind(this));
     prevButton.addEventListener('click', this._contentPrevious.bind(this));
-}
-
-Modalblanc.prototype.classEventListener = function(elm, callback) {
-	var _this = this;
-
-	for (i = 0; i < elm.length; i++) {
-	    elm[i].addEventListener('click', function() {
-            callback();
-	    });
-	}
 }
 
 function build() {

@@ -1,4 +1,4 @@
-# modalblanc
+# Modalblanc
 Simple Modalbox 
 
 ### Getting started

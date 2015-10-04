@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/Blancframe/modalblanc.svg?branch=master)](https://travis-ci.org/Blancframe/modalblanc)
-
-# Modalblanc
+# Modalblanc    [![Build Status](https://travis-ci.org/Blancframe/modalblanc.svg?branch=master)](https://travis-ci.org/Blancframe/modalblanc)
 Simple Modalbox 
 
 ### Getting started

@@ -1,32 +1,26 @@
-describe("DOM Tests", function () {
-    var btn = document.createElement("button");
-    btn.id = "modal-blanc-button";
-    btn.innerHTML = "Open modal blanc";
-    document.body.appendChild(btn);
-
+describe("Modal appearance tests", function () {
     var modal = new Modalblanc({
         content: '<h1>Welcome</h1>'
     });
- 
-    var myEl = document.getElementById('modal-blanc-button');
 
-    setTimeout(function() {
-        myEl.click();
-    }, 500)
+    modal.open();
 
-    myEl.onclick = function() {
-        modal.open();
-    }
-
-    it("is in the DOM", function () {
-        expect(myEl).to.not.equal(null);
-    });
+    var overlay = document.getElementById('overlay-modal-blanc'),
+        contentDiv = document.getElementById('front-card'),
+        closeButton = contentDiv.getElementsByClassName('modal-fullscreen-close');
  
     it("is a child of the body", function () {
-        expect(myEl.parentElement).to.equal(document.body);
+        expect(overlay.parentElement).to.equal(document.body);
     });
  
-    it("has the right text", function () {
-        expect(myEl.innerHTML).to.equal("Open modal blanc");
+    it("has the right html", function () {
+        expect(contentDiv.innerHTML).to.equal(
+                '<span class="modal-fullscreen-close">X</span>' + 
+                '<h1>Welcome</h1>'
+            );
+    });
+
+    it("has a close button", function() {
+        expect(closeButton[0].classList[0]).to.equal('modal-fullscreen-close');
     });
 });

@@ -10,3 +10,4 @@ before_script:
   - mocha-phantomjs --version
 script:
   - make test
+  - mocha-phantomjs testRunner.html

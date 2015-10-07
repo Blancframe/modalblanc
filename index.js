@@ -204,14 +204,14 @@ function buildButton(elm) {
             buildElement({
                 elm: 'a',
                 buttonId: 'modal-button-next',
-                buttonText: 'Next computed step',
+                buttonText: 'Next step',
                 parentId: 'front-card'
             });
 
             buildElement({
                 elm: 'a',
                 buttonId: 'modal-button-prev',
-                buttonText: 'Previous computed step',
+                buttonText: 'Previous step',
                 parentId: 'back-card'
             });
         }

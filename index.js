@@ -16,6 +16,7 @@ Modalblanc = function () {
         content: '',
         sideTwo: {
             content: null,
+            images: ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150'],
             animation: null,
             button: null,
             buttonBack: null
@@ -243,8 +244,6 @@ function stringAsNode(element, html) {
         child;
 
     tmp.innerHTML = html;
-
-
 
     while (child = tmp.firstChild) {
         frag.appendChild(child);

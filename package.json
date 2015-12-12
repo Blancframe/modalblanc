@@ -6,14 +6,18 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.3.0",
-    "grunt": "^0.4.5",
-    "grunt-browserify": "^4.0.1",
     "mocha": "^2.3.3",
-    "watchify": "^3.4.0"
+    "browserify": "^12.0.1",
+    "uglify-js": "^2.6.1",
+    "watchify": "^3.6.1"
   },
   "scripts": {
     "test": "make test",
-    "start": "node server.js"
+    "build-debug": "browserify index.js -d --s Modalblanc > dist/modalblanc.js",
+    "build-min": "browserify index.js --s Modalblanc | uglifyjs -c > dist/modalblanc.min.js",
+    "build": "npm run build-debug && npm run build-min",
+    "watch": "watchify index.js -d --s Modalblanc -o dist/modalblanc.js -v",
+    "watch-scss": "sass --watch sass:dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +29,7 @@
     "box"
   ],
   "author": "Jhon Majoor <jhonmajoor@gmail.com> (http://blancframe.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Blancframe/modalblanc/issues"
   },

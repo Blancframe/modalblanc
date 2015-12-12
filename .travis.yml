@@ -6,6 +6,7 @@ install:
   - npm install -g mocha-phantomjs
   - npm install -g grunt-cli
   - npm install
+  - gem install sass
 before_script:
   - phantomjs --version
   - mocha-phantomjs --version

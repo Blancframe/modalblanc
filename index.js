@@ -1,8 +1,7 @@
-/**
- * Modalblanc
- */
-Modalblanc = function () {
-    'use strict';
+'use strict';
+/* jshint node: true */
+
+var Modalblanc = function () {
     if (!(this instanceof Modalblanc)) {
       return new Modalblanc();
     }
@@ -28,7 +27,6 @@ Modalblanc = function () {
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = extendDefault(defaults, arguments[0]);
     }
-
 };
 
 Modalblanc.prototype.open = function() {
@@ -74,7 +72,7 @@ Modalblanc.prototype._contentPrevious = function() {
 Modalblanc.prototype.classEventListener = function(elm, callback) {
     var _this = this;
 
-    for (i = 0; i < elm.length; i++) {
+    for (var i = 0; i < elm.length; i++) {
         elm[i].addEventListener('click', function() {
             callback();
         });
@@ -262,5 +260,6 @@ function extendDefault(source, properties) {
     }
     return source;
 }
+
 
 module.exports = Modalblanc;

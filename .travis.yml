@@ -4,12 +4,11 @@ node_js:
 install:
   - npm install phantomjs -g
   - npm install -g mocha-phantomjs
-  - npm install -g grunt-cli
-  - npm install
   - gem install sass
+  - npm install
 before_script:
   - phantomjs --version
   - mocha-phantomjs --version
 script:
-  - make test
-  - mocha-phantomjs testRunner.html
+  - npm run build-files
+  - npm run test

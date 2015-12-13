@@ -9,4 +9,5 @@ before_script:
   - phantomjs --version
   - mocha-phantomjs --version
 script:
-  - make test
+  - npm run build-js
+  - npm run test

@@ -1,15 +1,22 @@
-# Modalblanc    [![Build Status](https://travis-ci.org/Blancframe/modalblanc.svg?branch=master)](https://travis-ci.org/Blancframe/modalblanc)
-Simple Modalbox 
+# Modalblanc
+
+[![Build Status](https://travis-ci.org/Blancframe/modalblanc.svg?branch=master)](https://travis-ci.org/Blancframe/modalblanc)
+
+## Simple Modalbox 
 
 ### Getting started
 
 **Add script to head or to bottom of body.**
 
-```<script src="js/modal-blanc-min.js"></script>```
+```<script src="dist/modalblanc.js"></script>```
+
+**Minified version.**
+
+```<script src="dist/modalblanc.min.js"></script>```
 
 **Add stylesheet to head**
 
-```<link rel="stylesheet" href="css/modal-blanc.css">```
+```<link rel="stylesheet" href="dist/modalblanc.css">```
 
 **Set content and animation**
 

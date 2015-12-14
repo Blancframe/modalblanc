@@ -1,6 +1,8 @@
 'use strict';
 /* jshint node: true */
 
+var ExtendDefault = require('./lib/extend_default');
+
 var Modalblanc = function () {
     if (!(this instanceof Modalblanc)) {
       return new Modalblanc();
@@ -25,7 +27,7 @@ var Modalblanc = function () {
     this.settings = {};
 
     if (arguments[0] && typeof arguments[0] === 'object') {
-        this.options = extendDefault(defaults, arguments[0]);
+        this.options = ExtendDefault(defaults, arguments[0]);
     }
 };
 
@@ -250,16 +252,5 @@ function stringAsNode(element, html) {
     element.appendChild(frag);
     frag = tmp = null;
 }
-
-function extendDefault(source, properties) {
-    var property;
-    for (property in properties) {
-        if (properties.hasOwnProperty(property)) {
-            source[property] = properties[property];
-        }
-    }
-    return source;
-}
-
 
 module.exports = Modalblanc;

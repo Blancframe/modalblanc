@@ -6,10 +6,15 @@
     <script src="dist/modalblanc.js"></script>
 </head>
 <body>
-
+    <ul class="slider">
+        <li class="slide"><img src="http://placehold.it/350x150" alt=""></li>
+        <li class="slide"><img src="http://placehold.it/350x250" alt=""></li>
+        <li class="slide"><img src="http://placehold.it/350x450" alt=""></li>
+    </ul>
 <script>
     var modal = new Modalblanc({
         content: '<h1>Hello world</h1>',
+        slider: '.slide',
         animation: 'slide-in-right',
         closeButton: true,
         sideTwo: {
@@ -17,6 +22,8 @@
             animation: 'scale'
         }
     });
+
+    modal.sliderInit();
 </script>
 </body>
 </html>

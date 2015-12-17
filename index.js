@@ -2,6 +2,9 @@
 /* jshint node: true */
 
 var ExtendDefault = require('./lib/extend_default');
+var ImageSlider = require('./lib/image_slider');
+var StringAsNode = require('./lib/string_as_node');
+
 
 var Modalblanc = function () {
     if (!(this instanceof Modalblanc)) {
@@ -15,9 +18,9 @@ var Modalblanc = function () {
         animation: 'fade-in-out',
         closeButton: true,
         content: '',
+        slider: null,
         sideTwo: {
             content: null,
-            images: ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150'],
             animation: null,
             button: null,
             buttonBack: null
@@ -29,6 +32,7 @@ var Modalblanc = function () {
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = ExtendDefault(defaults, arguments[0]);
     }
+
 };
 
 Modalblanc.prototype.open = function() {
@@ -53,6 +57,20 @@ Modalblanc.prototype.close = function() {
         this.remove();
         _this.settings.modalOpen = false;
     }, false);
+};
+
+Modalblanc.prototype.sliderInit = function() {
+    if (this.options.slider !== null) {
+        this.settings.slider = true;
+    }
+
+    if (this.settings.slider) {
+        this.open();
+        var slider = new ImageSlider({
+            selector: this.options.slider,
+            parent: '#front-card'
+        });
+    }
 };
 
 Modalblanc.prototype._contentNext = function() {
@@ -169,7 +187,7 @@ function build() {
         body[0].id = modalId;
     }
 
-    stringAsNode(document.getElementById(modalId), tmpl);
+    StringAsNode(document.getElementById(modalId), tmpl);
     this.settings.modalOpen = true;
 
     if (this.options.sideTwo.content === null) return;
@@ -234,23 +252,6 @@ function contentType(contentValue) {
     } else {
         return contentValue.innerHTML;
     }
-}
-
-function stringAsNode(element, html) {
-    if (html === null) return;
-
-    var frag = document.createDocumentFragment(),
-        tmp = document.createElement('body'),
-        child;
-
-    tmp.innerHTML = html;
-
-    while (child = tmp.firstChild) {
-        frag.appendChild(child);
-    }
-
-    element.appendChild(frag);
-    frag = tmp = null;
 }
 
 module.exports = Modalblanc;

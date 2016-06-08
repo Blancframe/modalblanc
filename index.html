@@ -6,15 +6,17 @@
     <script src="dist/modalblanc.js"></script>
 </head>
 <body>
-    <ul class="slider">
-        <li class="slide"><img src="http://placehold.it/350x150" alt=""></li>
-        <li class="slide"><img src="http://placehold.it/350x250" alt=""></li>
-        <li class="slide"><img src="http://placehold.it/350x450" alt=""></li>
-    </ul>
 <script>
+    var photos = [
+        'http://science-all.com/images/wallpapers/beach-images/beach-images-13.jpg',
+        'http://bboceansuites.com/wp-content/uploads/2015/05/sunset-beach-chairs-stock-footage.jpg',
+        'http://webneel.com/wallpaper/sites/default/files/images/04-2013/10-beach-sea-photography.jpg',
+        'http://www.allseasonsbeachclassic.co/images/revolution-slider/bestresortingoa.jpg'
+    ];
+
     var modal = new Modalblanc({
-        content: '<h1>Hello world</h1>',
-        slider: '.slide',
+        content: '',
+        slider: photos,
         animation: 'slide-in-right',
         closeButton: true,
         sideTwo: {

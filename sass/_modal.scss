@@ -65,7 +65,7 @@
     padding-bottom: 100px;
     @include perspective(800px);
     @include opacity(0);
-    
+
     .modal-fullscreen-item {
         background-color: $color-grey-back;
         border-radius: $radius-large;
@@ -164,7 +164,7 @@
                 margin: 10px 0 20px 0;
                 color: $color-grey-medium;
                 font-size: 14px;
-                
+
                 .first {
                     float: left;
                     width: 45%;
@@ -238,7 +238,7 @@
                     text-align: left;
                     padding-left: 22px;
                 }
-                
+
                 .footer-block-right {
                     @include span-columns(3);
                 }
@@ -487,6 +487,12 @@
         }
     }
 
+    &.slider-modal {
+        margin: 10% auto;
+        .modal-fullscreen-item {
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
 }
 
 .is-stopped-scrolling {

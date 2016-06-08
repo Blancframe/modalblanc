@@ -159,8 +159,9 @@ function build() {
         this.closeButton = '';
     }
 
-    var tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
-                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container big-modal">' +
+    var typeModal = this.settings.slider ? 'slider-modal' : 'big-modal',
+        tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
+                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container ' + typeModal + '">' +
                         '<div id="card">'+
                             '<div class="front">' +
                                 '<div id="front-card" class="modal-fullscreen-item">' +

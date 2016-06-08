@@ -2278,6 +2278,10 @@ html {
       max-width: 500px; }
       .modal-fullscreen-container.big-modal.donation-small .modal-fullscreen-item .modal-fullscreen-content .modal-flash-message {
         margin: 34px -31px 0 -31px; }
+  .modal-fullscreen-container.slider-modal {
+    margin: 10% auto; }
+    .modal-fullscreen-container.slider-modal .modal-fullscreen-item {
+      background-color: rgba(255, 255, 255, 0); }
 
 .is-stopped-scrolling {
   height: 100%;
@@ -2295,13 +2299,24 @@ html {
     left: 0;
     right: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     opacity: 0;
     z-index: 1;
     -webkit-transition: opacity, 1s;
     -moz-transition: opacity, 1s;
-    transition: opacity, 1s; }
+    transition: opacity, 1s;
+    -webkit-animation: slideOutLeft 0.2s ease-in;
+    -moz-animation: slideOutLeft 0.2s ease-in;
+    -o-animation: slideOutLeft 0.2s ease-in;
+    animation: slideOutLeft 0.2s ease-in; }
+    .image-slider-holder .image-slider img {
+      max-width: 1200px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); }
     .image-slider-holder .image-slider.is-showing {
+      -webkit-animation: slideInRight 0.3s ease-out;
+      -moz-animation: slideInRight 0.3s ease-out;
+      -o-animation: slideInRight 0.3s ease-out;
+      animation: slideInRight 0.3s ease-out;
       opacity: 1;
       z-index: 2; }
 

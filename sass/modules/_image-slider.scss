@@ -1,9 +1,9 @@
 .image-slider-holder {
     position: relative;
-    height: 300px;
+    margin: 0 auto;
     padding: 0;
-    margin: 0;
     list-style-type: none;
+    max-width: 1200px;
 
     .image-slider {
         position: absolute;
@@ -26,5 +26,11 @@
             opacity: 1;
             z-index: 2;
         }
+    }
+
+    #pause-btn {
+        position: absolute;
+        top: -20px;
+        left: 0;
     }
 }

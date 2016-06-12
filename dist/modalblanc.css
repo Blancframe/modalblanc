@@ -2310,6 +2310,7 @@ html {
     -o-animation: slideOutLeft 0.2s ease-in;
     animation: slideOutLeft 0.2s ease-in; }
     .image-slider-holder .image-slider img {
+      width: 100%;
       max-width: 1200px;
       box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4); }
     .image-slider-holder .image-slider.is-showing {

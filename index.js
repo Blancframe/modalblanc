@@ -4,6 +4,7 @@
 var ExtendDefault = require('./lib/extend_default');
 var ImageSlider = require('./lib/image_slider');
 var StringAsNode = require('./lib/string_as_node');
+var Template = require('./lib/template-engine');
 
 
 var Modalblanc = function () {
@@ -28,6 +29,8 @@ var Modalblanc = function () {
       };
 
     this.settings = {};
+
+    this.hasSlider = this.hasSlider ? true : false;
 
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = ExtendDefault(defaults, arguments[0]);
@@ -61,12 +64,12 @@ Modalblanc.prototype.close = function() {
 
 Modalblanc.prototype.sliderInit = function(side) {
     if (this.options.slider !== null) {
-        this.settings.slider = true;
+        this.hasSlider = true;
     }
 
-    if (this.settings.slider) {
+    if (this.hasSlider) {
         this.open();
-        var slider = new ImageSlider({
+        this.slider = new ImageSlider({
             selector: this.options.slider,
             parent: side
         });
@@ -74,6 +77,10 @@ Modalblanc.prototype.sliderInit = function(side) {
 };
 
 Modalblanc.prototype._contentNext = function() {
+    if (this.hasSlider) {
+        if (this.slider.playing) this.slider.pause();
+    }
+
     var card = document.getElementById('card'),
         customClass = this.options.sideTwo.animation;
 
@@ -82,6 +89,10 @@ Modalblanc.prototype._contentNext = function() {
 };
 
 Modalblanc.prototype._contentPrevious = function() {
+    if (this.hasSlider) {
+        if (!this.slider.playing) this.slider.play();
+    }
+
     var card = document.getElementById('card'),
         customClass = this.options.sideTwo.animation;
 
@@ -153,33 +164,41 @@ function setEvents() {
 }
 
 function build() {
-    if (this.options.closeButton === true) {
-        this.closeButton = '<span class="modal-fullscreen-close">X</span>';
-    } else {
-        this.closeButton = '';
-    }
+    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close">X</span>';
 
-    var typeModal = this.options.slider ? 'slider-modal' : 'big-modal',
-        tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
-                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container ' + typeModal + '">' +
+    var contentSideOne = !this.options.slider ? contentType(this.options.content) : contentType('<div id="modal-slider"></div>');
+
+    var typeModal = this.options.slider ? 'slider-modal' : 'big-modal';
+    var modal = '<div id="overlay-modal-blanc" class="modal-fullscreen-background <%this.animation%> <%this.state%>">' +
+                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container <%this.type%> ">' +
                         '<div id="card">'+
                             '<div class="front">' +
-                                '<div id="front-card" class="modal-fullscreen-item">' +
-                                    this.closeButton +
-                                    contentType(this.options.content) +
+                                '<div id="front-card" class="modal-fullscreen-item">'+
+                                    '<%this.closeButton%>' +
+                                    '<%this.contentTypeSideOne%>' +
                                 '</div>'+
                             '</div>' +
                             '<div class="back">' +
                                 '<div  id="back-card" class="modal-fullscreen-item">' +
-                                    this.closeButton +
-                                    contentType(this.options.sideTwo.content) +
+                                    '<%this.closeButton%>' +
+                                    '<%this.contentTypeSideTwo%>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
-                '</div>',
-        modalId,
-        body = document.getElementsByTagName('body');
+                '</div>';
+
+    var modalTemplate = Template(modal, {
+        animation: this.options.animation,
+        state: 'is-active',
+        type: typeModal,
+        closeButton: this.closeButton,
+        contentTypeSideOne: contentSideOne,
+        contentTypeSideTwo: contentType(this.options.sideTwo.content)
+    });
+
+    var body = document.getElementsByTagName('body'),
+        modalId;
 
     if (body[0].id) {
         modalId = body[0].id;
@@ -188,15 +207,15 @@ function build() {
         body[0].id = modalId;
     }
 
-    StringAsNode(document.getElementById(modalId), tmpl);
+    StringAsNode(document.getElementById(modalId), modalTemplate);
     this.settings.modalOpen = true;
+
+    if (this.options.slider) this.sliderInit('#modal-slider');
 
     if (this.options.sideTwo.content === null) return;
 
     buildButton(this.options.sideTwo.button);
     buildButton(this.options.sideTwo.buttonBack, 'back');
-
-    if (this.options.slider) this.sliderInit('#front-card');
 }
 
 function buildElement(buildOptions) {

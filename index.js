@@ -59,7 +59,7 @@ Modalblanc.prototype.close = function() {
     }, false);
 };
 
-Modalblanc.prototype.sliderInit = function() {
+Modalblanc.prototype.sliderInit = function(side) {
     if (this.options.slider !== null) {
         this.settings.slider = true;
     }
@@ -68,7 +68,7 @@ Modalblanc.prototype.sliderInit = function() {
         this.open();
         var slider = new ImageSlider({
             selector: this.options.slider,
-            parent: '#front-card'
+            parent: side
         });
     }
 };
@@ -159,7 +159,7 @@ function build() {
         this.closeButton = '';
     }
 
-    var typeModal = this.settings.slider ? 'slider-modal' : 'big-modal',
+    var typeModal = this.options.slider ? 'slider-modal' : 'big-modal',
         tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
                     '<div id="modal-fullscreen-container"class="modal-fullscreen-container ' + typeModal + '">' +
                         '<div id="card">'+
@@ -195,6 +195,8 @@ function build() {
 
     buildButton(this.options.sideTwo.button);
     buildButton(this.options.sideTwo.buttonBack, 'back');
+
+    if (this.options.slider) this.sliderInit('#front-card');
 }
 
 function buildElement(buildOptions) {

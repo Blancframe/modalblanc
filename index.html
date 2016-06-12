@@ -8,15 +8,14 @@
 <body>
 <script>
     var photos = [
-        'http://science-all.com/images/wallpapers/beach-images/beach-images-13.jpg',
-        'http://bboceansuites.com/wp-content/uploads/2015/05/sunset-beach-chairs-stock-footage.jpg',
-        'http://webneel.com/wallpaper/sites/default/files/images/04-2013/10-beach-sea-photography.jpg',
-        'http://www.allseasonsbeachclassic.co/images/revolution-slider/bestresortingoa.jpg'
+        'dist/img/example-images-1.jpg',
+        'dist/img/example-images-2.jpg',
+        'dist/img/example-images-3.jpg',
+        'dist/img/example-images-4.jpg'
     ];
 
     var modal = new Modalblanc({
-        content: '',
-        slider: photos,
+        content: '<h1>Content data man!</h1>',
         animation: 'slide-in-right',
         closeButton: true,
         sideTwo: {
@@ -25,7 +24,7 @@
         }
     });
 
-    modal.sliderInit();
+    modal.open();
 </script>
 </body>
 </html>

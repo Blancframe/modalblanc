@@ -2278,10 +2278,16 @@ html {
       max-width: 500px; }
       .modal-fullscreen-container.big-modal.donation-small .modal-fullscreen-item .modal-fullscreen-content .modal-flash-message {
         margin: 34px -31px 0 -31px; }
-  .modal-fullscreen-container.slider-modal {
-    margin: 2% auto; }
-    .modal-fullscreen-container.slider-modal .modal-fullscreen-item {
-      background-color: rgba(255, 255, 255, 0); }
+  .modal-fullscreen-container.slider-modal #front-card.modal-fullscreen-item {
+    position: relative;
+    max-width: 68em;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0); }
+    .modal-fullscreen-container.slider-modal #front-card.modal-fullscreen-item #modal-slider {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0; }
 
 .is-stopped-scrolling {
   height: 100%;
@@ -2290,16 +2296,22 @@ html {
 
 .image-slider-holder {
   position: relative;
-  margin: 0 auto;
   padding: 0;
   list-style-type: none;
-  max-width: 1200px; }
+  max-width: 1200px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s; }
   .image-slider-holder .image-slider {
     position: absolute;
     left: 0;
     right: 0;
     width: 100%;
-    height: auto;
     opacity: 0;
     z-index: 1;
     -webkit-transition: opacity, 1s;
@@ -2320,9 +2332,30 @@ html {
       animation: slideInRight 0.3s ease-out;
       opacity: 1;
       z-index: 2; }
-  .image-slider-holder #pause-btn {
+  .image-slider-holder #play-btn {
     position: absolute;
-    top: -20px;
-    left: 0; }
+    margin: auto;
+    top: -45px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: url("img/icons/icon-play-button.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 2;
+    cursor: pointer;
+    -webkit-transition: opacity, 1s;
+    -moz-transition: opacity, 1s;
+    transition: opacity, 1s;
+    -webkit-animation: flipFront 0.2s ease-in;
+    -moz-animation: flipFront 0.2s ease-in;
+    -o-animation: flipFront 0.2s ease-in;
+    animation: flipFront 0.2s ease-in; }
+    .image-slider-holder #play-btn.is-pause {
+      background: url("img/icons/icon-pause-button.svg");
+      -webkit-animation: flipBack 0.3s ease-out;
+      -moz-animation: flipBack 0.3s ease-out;
+      -o-animation: flipBack 0.3s ease-out;
+      animation: flipBack 0.3s ease-out; }
 
 /*# sourceMappingURL=modalblanc.css.map */

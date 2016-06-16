@@ -31,6 +31,8 @@ var Modalblanc = function () {
     this.settings = {};
 
     this.hasSlider = this.hasSlider ? true : false;
+    this.sliderIsOpen = false;
+    this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
 
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = ExtendDefault(defaults, arguments[0]);
@@ -69,16 +71,21 @@ Modalblanc.prototype.sliderInit = function(side) {
 
     if (this.hasSlider) {
         this.open();
+        this.sliderIsOpen = true;
+
         this.slider = new ImageSlider({
-            selector: this.options.slider,
-            parent: side
+            parent: side,
+            selector: this.options.slider
         });
     }
 };
 
 Modalblanc.prototype._contentNext = function() {
     if (this.hasSlider) {
+        this.sliderIsOpen = false;
         if (this.slider.playing) this.slider.pause();
+        removeClass(this.modalContainer, 'slider-modal');
+        addClass(this.modalContainer, 'big-modal');
     }
 
     var card = document.getElementById('card'),
@@ -91,6 +98,8 @@ Modalblanc.prototype._contentNext = function() {
 Modalblanc.prototype._contentPrevious = function() {
     if (this.hasSlider) {
         if (!this.slider.playing) this.slider.play();
+        removeClass(this.modalContainer, 'big-modal');
+        addClass(this.modalContainer, 'slider-modal');
     }
 
     var card = document.getElementById('card'),
@@ -276,4 +285,11 @@ function contentType(contentValue) {
     }
 }
 
+function addClass(selector, className) {
+    selector[0].classList.add(className)
+}
+
+function removeClass(selector, className) {
+    selector[0].classList.remove(className)
+}
 module.exports = Modalblanc;

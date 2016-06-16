@@ -1,18 +1,19 @@
 .image-slider-holder {
     position: relative;
-    margin: 0 auto;
     padding: 0;
     list-style-type: none;
     max-width: 1200px;
+    @include transform-style(preserve-3d);
+    @include transition(transform .3s);
 
     .image-slider {
         position: absolute;
         left: 0;
         right: 0;
         width: 100%;
-        height: auto;
         opacity: 0;
         z-index: 1;
+        // background: white;
         @include transition(opacity, 1s);
         @include animation(slideOutLeft .2s ease-in);
 
@@ -29,9 +30,24 @@
         }
     }
 
-    #pause-btn {
+    #play-btn {
         position: absolute;
-        top: -20px;
+        margin: auto;
+        top: -45px;
         left: 0;
+        width: 30px;
+        height: 30px;
+        background: url('img/icons/icon-play-button.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        z-index: 2;
+        cursor: pointer;
+        @include transition(opacity, 1s);
+        @include animation(flipFront .2s ease-in);
+
+        &.is-pause {
+            background: url('img/icons/icon-pause-button.svg');
+            @include animation(flipBack .3s ease-out);
+        }
     }
 }

@@ -97,7 +97,7 @@ Modalblanc.prototype._contentNext = function() {
 
 Modalblanc.prototype._contentPrevious = function() {
     if (this.hasSlider) {
-        if (!this.slider.playing) this.slider.play();
+        // if (!this.slider.playing) this.slider.play();
         removeClass(this.modalContainer, 'big-modal');
         addClass(this.modalContainer, 'slider-modal');
     }

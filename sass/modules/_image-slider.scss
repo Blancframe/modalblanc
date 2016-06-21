@@ -34,7 +34,7 @@
         position: absolute;
         margin: auto;
         top: -45px;
-        left: 0;
+        left: 80px;
         width: 30px;
         height: 30px;
         background: url('img/icons/icon-play-button.svg');
@@ -49,5 +49,29 @@
             background: url('img/icons/icon-pause-button.svg');
             @include animation(flipBack .3s ease-out);
         }
+    }
+
+    #previous-btn, #next-btn {
+        position: absolute;
+        margin: auto;
+        top: -45px;
+        width: 30px;
+        height: 30px;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #previous-btn {
+        left: 0;
+        background: url('img/icons/icon-previous-button.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #next-btn {
+        left: 40px;
+        background: url('img/icons/icon-next-button.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
 }

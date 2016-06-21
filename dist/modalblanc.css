@@ -2336,7 +2336,7 @@ html {
     position: absolute;
     margin: auto;
     top: -45px;
-    left: 0;
+    left: 80px;
     width: 30px;
     height: 30px;
     background: url("img/icons/icon-play-button.svg");
@@ -2357,5 +2357,23 @@ html {
       -moz-animation: flipBack 0.3s ease-out;
       -o-animation: flipBack 0.3s ease-out;
       animation: flipBack 0.3s ease-out; }
+  .image-slider-holder #previous-btn, .image-slider-holder #next-btn {
+    position: absolute;
+    margin: auto;
+    top: -45px;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    cursor: pointer; }
+  .image-slider-holder #previous-btn {
+    left: 0;
+    background: url("img/icons/icon-previous-button.svg");
+    background-size: 100%;
+    background-repeat: no-repeat; }
+  .image-slider-holder #next-btn {
+    left: 40px;
+    background: url("img/icons/icon-next-button.svg");
+    background-size: 100%;
+    background-repeat: no-repeat; }
 
 /*# sourceMappingURL=modalblanc.css.map */

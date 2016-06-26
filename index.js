@@ -62,6 +62,9 @@ Modalblanc.prototype.close = function() {
         this.remove();
         _this.settings.modalOpen = false;
     }, false);
+
+    document.onkeyup = null;
+    document.onkeydown = null;
 };
 
 Modalblanc.prototype.sliderInit = function(side) {

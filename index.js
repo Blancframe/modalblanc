@@ -166,10 +166,13 @@ function setEvents() {
         _this.close();
     });
 
+    keyboardActions.call(this);
+
     if (this.options.sideTwo.content === null) return;
 
     nextButton.addEventListener('click', this._contentNext.bind(this));
     prevButton.addEventListener('click', this._contentPrevious.bind(this));
+
 }
 
 function build() {
@@ -291,5 +294,16 @@ function addClass(selector, className) {
 
 function removeClass(selector, className) {
     selector[0].classList.remove(className)
+}
+
+function keyboardActions() {
+    var _this = this;
+
+    document.onkeyup = function(e) {
+        e.preventDefault();
+        if (_this.settings.modalOpen && e.keyCode == 27) {
+            _this.close();
+        }
+    }
 }
 module.exports = Modalblanc;

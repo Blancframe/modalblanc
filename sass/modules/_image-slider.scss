@@ -13,9 +13,7 @@
         width: 100%;
         opacity: 0;
         z-index: 1;
-        // background: white;
         @include transition(opacity, 1s);
-        @include animation(slideOutLeft .2s ease-in);
 
         img {
             width: 100%;
@@ -24,9 +22,36 @@
         }
 
         &.is-showing {
-            @include animation(slideInRight .3s ease-out);
             opacity: 1;
-            z-index: 2;
+        }
+
+        &.next {
+
+            &.is-hiding {
+                z-index: 1;
+                @include transition(opacity, 1s);
+                @include animation(slideOutLeft .2s ease-in);
+            }
+
+            &.is-showing {
+                @include animation(slideInRight .3s ease-out);
+                opacity: 1;
+                z-index: 2;
+            }
+        }
+
+        &.previous {
+            &.is-hiding {
+                z-index: 2;
+                @include transition(opacity, 1s);
+                @include animation(slideOutRight .2s ease-in);
+            }
+
+            &.is-showing {
+                @include animation(slideInLeft .3s ease-out);
+                opacity: 1;
+                z-index: 1;
+            }
         }
     }
 

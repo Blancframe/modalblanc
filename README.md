@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Blancframe/modalblanc.svg?branch=master)](https://travis-ci.org/Blancframe/modalblanc)
 
-## Simple Modalbox 
+## Simple Modalbox
 
 ### Getting started
 
@@ -33,7 +33,7 @@
             buttonBack: {element: 'a', text: 'GO BACK!!', type: 'prevStep', id: 'modal-button-prev', parent: 'back-card'}
         }
     });
-    
+
     modal.open();
     modal.close();
 </script>
@@ -69,6 +69,21 @@ modal.close();
 * **animation** (String - default=fade-in-out)
 > Type of animation (fade-in-out, slide-in-right)
 
+* **slider** (Array - optional)
+> Enable photo slider
+
+```
+var photos = [
+    'image.jpg',
+    'image.jpg',
+    'image.jpg'
+];
+
+var modal = new Modalblanc({
+    slider: photos
+});
+```
+
 * **closeButton** (Boolean - default=true)
 > Show or hide the close button
 
@@ -83,4 +98,3 @@ modal.close();
 
 * **sideTwo: buttonBack** (Object - default=null)
 > Custom elements (a, button, li e.g.) `id` always have to be `modal-button-prev` and `parent` always `back-card`. Fix this on short term.
-

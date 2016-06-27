@@ -2,6 +2,10 @@
 /* jshint node: true */
 
 var ExtendDefault = require('./lib/extend_default');
+var ImageSlider = require('./lib/image_slider');
+var StringAsNode = require('./lib/string_as_node');
+var Template = require('./lib/template-engine');
+
 
 var Modalblanc = function () {
     if (!(this instanceof Modalblanc)) {
@@ -15,9 +19,9 @@ var Modalblanc = function () {
         animation: 'fade-in-out',
         closeButton: true,
         content: '',
+        slider: null,
         sideTwo: {
             content: null,
-            images: ['http://placehold.it/350x150', 'http://placehold.it/350x150', 'http://placehold.it/350x150'],
             animation: null,
             button: null,
             buttonBack: null
@@ -26,9 +30,13 @@ var Modalblanc = function () {
 
     this.settings = {};
 
+    this.hasSlider = this.hasSlider ? true : false;
+    this.sliderIsOpen = false;
+
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = ExtendDefault(defaults, arguments[0]);
     }
+
 };
 
 Modalblanc.prototype.open = function() {
@@ -53,9 +61,35 @@ Modalblanc.prototype.close = function() {
         this.remove();
         _this.settings.modalOpen = false;
     }, false);
+
+    document.onkeyup = null;
+    document.onkeydown = null;
+};
+
+Modalblanc.prototype.sliderInit = function(side) {
+    if (this.options.slider !== null) {
+        this.hasSlider = true;
+    }
+
+    if (this.hasSlider) {
+        this.open();
+        this.sliderIsOpen = true;
+
+        this.slider = new ImageSlider({
+            parent: side,
+            selector: this.options.slider
+        });
+    }
 };
 
 Modalblanc.prototype._contentNext = function() {
+    if (this.hasSlider) {
+        this.sliderIsOpen = false;
+        if (this.slider.playing) this.slider.pause();
+        removeClass(this.modalContainer, 'slider-modal');
+        addClass(this.modalContainer, 'big-modal');
+    }
+
     var card = document.getElementById('card'),
         customClass = this.options.sideTwo.animation;
 
@@ -64,6 +98,12 @@ Modalblanc.prototype._contentNext = function() {
 };
 
 Modalblanc.prototype._contentPrevious = function() {
+    if (this.hasSlider) {
+        // if (!this.slider.playing) this.slider.play();
+        removeClass(this.modalContainer, 'big-modal');
+        addClass(this.modalContainer, 'slider-modal');
+    }
+
     var card = document.getElementById('card'),
         customClass = this.options.sideTwo.animation;
 
@@ -128,39 +168,52 @@ function setEvents() {
         _this.close();
     });
 
+    keyboardActions.call(this);
+
     if (this.options.sideTwo.content === null) return;
 
     nextButton.addEventListener('click', this._contentNext.bind(this));
     prevButton.addEventListener('click', this._contentPrevious.bind(this));
+
 }
 
 function build() {
-    if (this.options.closeButton === true) {
-        this.closeButton = '<span class="modal-fullscreen-close">X</span>';
-    } else {
-        this.closeButton = '';
-    }
+    this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
+    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close">X</span>';
 
-    var tmpl = '<div id="overlay-modal-blanc" class="modal-fullscreen-background' + ' ' +  this.options.animation + ' ' + 'is-active">' +
-                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container big-modal">' +
+    var contentSideOne = !this.options.slider ? contentType(this.options.content) : contentType('<div id="modal-slider"></div>');
+
+    var typeModal = this.options.slider ? 'slider-modal' : 'big-modal';
+    var modal = '<div id="overlay-modal-blanc" class="modal-fullscreen-background <%this.animation%> <%this.state%>">' +
+                    '<div id="modal-fullscreen-container"class="modal-fullscreen-container <%this.type%> ">' +
                         '<div id="card">'+
                             '<div class="front">' +
-                                '<div id="front-card" class="modal-fullscreen-item">' +
-                                    this.closeButton +
-                                    contentType(this.options.content) +
+                                '<div id="front-card" class="modal-fullscreen-item">'+
+                                    '<%this.closeButton%>' +
+                                    '<%this.contentTypeSideOne%>' +
                                 '</div>'+
                             '</div>' +
                             '<div class="back">' +
                                 '<div  id="back-card" class="modal-fullscreen-item">' +
-                                    this.closeButton +
-                                    contentType(this.options.sideTwo.content) +
+                                    '<%this.closeButton%>' +
+                                    '<%this.contentTypeSideTwo%>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
-                '</div>',
-        modalId,
-        body = document.getElementsByTagName('body');
+                '</div>';
+
+    var modalTemplate = Template(modal, {
+        animation: this.options.animation,
+        state: 'is-active',
+        type: typeModal,
+        closeButton: this.closeButton,
+        contentTypeSideOne: contentSideOne,
+        contentTypeSideTwo: contentType(this.options.sideTwo.content)
+    });
+
+    var body = document.getElementsByTagName('body'),
+        modalId;
 
     if (body[0].id) {
         modalId = body[0].id;
@@ -169,8 +222,10 @@ function build() {
         body[0].id = modalId;
     }
 
-    stringAsNode(document.getElementById(modalId), tmpl);
+    StringAsNode(document.getElementById(modalId), modalTemplate);
     this.settings.modalOpen = true;
+
+    if (this.options.slider) this.sliderInit('#modal-slider');
 
     if (this.options.sideTwo.content === null) return;
 
@@ -236,21 +291,22 @@ function contentType(contentValue) {
     }
 }
 
-function stringAsNode(element, html) {
-    if (html === null) return;
-
-    var frag = document.createDocumentFragment(),
-        tmp = document.createElement('body'),
-        child;
-
-    tmp.innerHTML = html;
-
-    while (child = tmp.firstChild) {
-        frag.appendChild(child);
-    }
-
-    element.appendChild(frag);
-    frag = tmp = null;
+function addClass(selector, className) {
+    selector[0].classList.add(className)
 }
 
+function removeClass(selector, className) {
+    selector[0].classList.remove(className)
+}
+
+function keyboardActions() {
+    var _this = this;
+
+    document.onkeyup = function(e) {
+        e.preventDefault();
+        if (_this.settings.modalOpen && e.keyCode == 27) {
+            _this.close();
+        }
+    }
+}
 module.exports = Modalblanc;

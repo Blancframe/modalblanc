@@ -6,17 +6,26 @@
     <script src="dist/modalblanc.js"></script>
 </head>
 <body>
-
 <script>
+    var photos = [
+        'dist/img/example-images-1.jpg',
+        'dist/img/example-images-2.jpg',
+        'dist/img/example-images-3.jpg',
+        'dist/img/example-images-4.jpg'
+    ];
+
     var modal = new Modalblanc({
-        content: '<h1>Hello world</h1>',
+        content: '<h1>Content data man!</h1>',
         animation: 'slide-in-right',
         closeButton: true,
+        slider: photos,
         sideTwo: {
             content: '<h2>Hello universe!</h2>',
             animation: 'scale'
         }
     });
+
+    modal.open();
 </script>
 </body>
 </html>

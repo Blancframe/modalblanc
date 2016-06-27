@@ -32,7 +32,6 @@ var Modalblanc = function () {
 
     this.hasSlider = this.hasSlider ? true : false;
     this.sliderIsOpen = false;
-    this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
 
     if (arguments[0] && typeof arguments[0] === 'object') {
         this.options = ExtendDefault(defaults, arguments[0]);
@@ -179,6 +178,7 @@ function setEvents() {
 }
 
 function build() {
+    this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
     if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close">X</span>';
 
     var contentSideOne = !this.options.slider ? contentType(this.options.content) : contentType('<div id="modal-slider"></div>');

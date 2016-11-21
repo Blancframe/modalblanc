@@ -1,3 +1,4 @@
+@import url("../dist/font/stylesheet.css");
 html {
   box-sizing: border-box; }
 
@@ -1783,7 +1784,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #606c71; }
@@ -1795,8 +1796,8 @@ a {
   padding: 80px 96px;
   color: #fff;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  background-color: #243B55;
+  background-image: linear-gradient(120deg, #141E30, #243B55); }
   .docs-header .docs-name {
     margin-top: 0;
     margin-bottom: 1.6px;
@@ -1806,6 +1807,19 @@ a {
     margin-bottom: 32px;
     line-height: 30px;
     opacity: .7; }
+
+.docs-content {
+  max-width: 64rem;
+  padding: 2rem 6rem;
+  margin: 0 auto;
+  font-size: 1.1rem; }
+  .docs-content h3.docs-h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    color: #159957; }
+  .docs-content p.doc-p {
+    margin-bottom: 1em; }
 
 .docs-btn {
   display: inline-block;
@@ -1818,5 +1832,9 @@ a {
   border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
   padding: 0.75rem 1rem; }
+  .docs-btn.docs-btn-sec {
+    border-color: rgba(20, 30, 48, 0.2);
+    color: rgba(20, 30, 48, 0.7);
+    background-color: rgba(20, 30, 48, 0.08); }
 
 /*# sourceMappingURL=docs.css.map */

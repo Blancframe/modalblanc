@@ -2,30 +2,63 @@
 <html>
 <head>
     <title>Modalblanc Example</title>
+    <link rel="stylesheet" href="dist/docs.css">
     <link rel="stylesheet" href="dist/modalblanc.css">
     <script src="dist/modalblanc.js"></script>
 </head>
 <body>
-<script>
-    var photos = [
-        'dist/img/example-images-1.jpg',
-        'dist/img/example-images-2.jpg',
-        'dist/img/example-images-3.jpg',
-        'dist/img/example-images-4.jpg'
-    ];
+    <section class="docs-header">
+        <h1 class="docs-name">Modalblanc</h1>
+        <h2 class="docs-tagline">Simple Modalbox </h2>
+        <a href="https://github.com/Blancframe/modalblanc" class="docs-btn">View on Github</a>
+    </section>
 
-    var modal = new Modalblanc({
-        content: '<h1>Content data man!</h1>',
-        animation: 'slide-in-right',
-        closeButton: true,
-        slider: photos,
-        sideTwo: {
-            content: '<h2>Hello universe!</h2>',
-            animation: 'scale'
+    <section class="docs-content">
+        <h3 class="docs-h3">Getting started</h3>
+        <p class="docs-p">
+            <a href="#" class="docs-btn docs-btn-sec" id="openModal">
+                Open modal
+            </a>
+            <a href="#" class="docs-btn docs-btn-sec" id="openModalImages">
+                Open modal with images
+            </a>
+        </p>
+    </section>
+    <script>
+        const modal = new Modalblanc({
+            content: '<h1>Simple modal with data!</h1>'
+        });
+
+        const photos = [
+            'dist/img/example-images-1.jpg',
+            'dist/img/example-images-2.jpg',
+            'dist/img/example-images-3.jpg',
+            'dist/img/example-images-4.jpg'
+        ];
+
+        const modalSlider = new Modalblanc({
+            content: '<h1>Content data man!</h1>',
+            animation: 'slide-in-right',
+            closeButton: true,
+            slider: photos,
+            sideTwo: {
+                content: '<h2>Hello universe!</h2>',
+                animation: 'scale'
+            }
+        });
+
+        const openModal = document.getElementById('openModal'),
+            openModalImages = document.getElementById('openModalImages');
+
+        openModal.onclick = function(e) {
+            e.preventDefault();
+            modal.open();
         }
-    });
 
-    modal.open();
-</script>
+        openModalImages.onclick = function(e) {
+            e.preventDefault();
+            modalSlider.open();
+        }
+    </script>
 </body>
 </html>

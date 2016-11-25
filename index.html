@@ -4,6 +4,8 @@
     <title>Modalblanc Example</title>
     <link rel="stylesheet" href="dist/docs.css">
     <link rel="stylesheet" href="dist/modalblanc.css">
+    <link rel="stylesheet" href="dist/rainbow.min.css">
+    <script src="dist/rainbow-custom.min.js"></script>
     <script src="dist/modalblanc.js"></script>
 </head>
 <body>
@@ -14,7 +16,7 @@
     </section>
 
     <section class="docs-content">
-        <h3 class="docs-h3">Getting started</h3>
+        <h2 class="docs-h2">View Demos</h2>
         <p class="docs-p">
             <a href="#" class="docs-btn docs-btn-sec" id="openModal">
                 Open modal
@@ -22,6 +24,26 @@
             <a href="#" class="docs-btn docs-btn-sec" id="openModalImages">
                 Open modal with images
             </a>
+        </p>
+
+        <h3 class="docs-h3">Getting started</h3>
+        <strong>Add script to head or to bottom of body.</strong>
+<pre><code data-language="html"><script src="dist/modalblanc.js"></script>
+</code></pre>
+
+<strong>Add stylesheet to head</strong>
+<pre><code data-language="html"><link rel="stylesheet" href="dist/modalblanc.css">
+</code></pre>
+
+        <p class="docs-p">
+
+<pre><code data-language="javascript">const photos = [
+    'dist/img/example-images-1.jpg',
+    'dist/img/example-images-2.jpg',
+    'dist/img/example-images-3.jpg',
+    'dist/img/example-images-4.jpg'
+];
+</code></pre>
         </p>
     </section>
     <script>
@@ -60,5 +82,6 @@
             modalSlider.open();
         }
     </script>
+
 </body>
 </html>

@@ -2,8 +2,8 @@
     padding: 80px 96px;
     color: #fff;
     text-align: center;
-    background-color: #243B55;
-    background-image: linear-gradient(120deg, #141E30, #243B55);
+    background-color: $color-pri;
+    background-image: linear-gradient(120deg, $color-sec, $color-pri);
 
     .docs-name {
         margin-top: 0;

@@ -42,7 +42,7 @@
   100% {
     visibility: hidden;
     @include opacity(0);
-    
+
   }
 }
 
@@ -121,7 +121,7 @@
 
 ////// Expose //////
 @include keyframes(tada) {
-  0%{ 
+  0%{
     @include transform(scale(1));
   }
   10% {
@@ -228,7 +228,7 @@
   }
   100% {
     @include transform(scale(0));
-    @include opacity(0); 
+    @include opacity(0);
   }
 }
 
@@ -239,7 +239,7 @@
   }
   100% {
     @include transform(scale(1));
-    @include opacity(1); 
+    @include opacity(1);
   }
 }
 
@@ -250,7 +250,7 @@
   }
   100% {
     @include transform(scale(4));
-    @include opacity(0); 
+    @include opacity(0);
   }
 }
 
@@ -261,11 +261,6 @@
   }
   100% {
     @include transform(scale(1));
-    @include opacity(1); 
+    @include opacity(1);
   }
 }
-
-
-
-
-

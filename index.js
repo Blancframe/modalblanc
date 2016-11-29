@@ -181,7 +181,7 @@ function setEvents() {
 
 function build() {
     this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
-    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close">X</span>';
+    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close"></span>';
 
     var contentSideOne = !this.options.slider ? contentType(this.options.content) : contentType('<div id="modal-slider"></div>');
 

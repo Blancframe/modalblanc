@@ -190,11 +190,13 @@
             position: absolute;
             display: block;
             top: 10px;
-            right: 14px;
-            width: 20px;
-            height: 20px;
-            // @include svg-icon("modal/icon-close-modal.svg");
-            // background-position: 7px 7px;
+            right: 0;
+            width: 22px;
+            height: 22px;
+            background: url('img/icons/icon-close.svg');
+            background-size: 15px;
+            background-repeat: no-repeat;
+            background-position: 7px 7px;
             cursor: pointer;
 
             .modal-close-image {

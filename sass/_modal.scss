@@ -471,7 +471,7 @@
     }
 
     &.big-modal {
-        max-width: 600px;
+        max-width: 600px;;
         @include transition(all .2s ease-in-out);
 
         &.donation-small {

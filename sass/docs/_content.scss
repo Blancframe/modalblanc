@@ -1,0 +1,17 @@
+.docs-content {
+    max-width: 800px;
+    padding: 20px 40px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+
+    h3.docs-h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
+        color: $color-sec;
+    }
+
+    p.doc-p {
+        margin-bottom: 1em;
+    }
+}

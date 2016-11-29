@@ -20,6 +20,7 @@ var Modalblanc = function () {
         closeButton: true,
         content: '',
         slider: null,
+        autoPlaySlider: false,
         sideTwo: {
             content: null,
             animation: null,
@@ -77,7 +78,8 @@ Modalblanc.prototype.sliderInit = function(side) {
 
         this.slider = new ImageSlider({
             parent: side,
-            selector: this.options.slider
+            selector: this.options.slider,
+            autoPlay: this.options.autoPlaySlider
         });
     }
 };

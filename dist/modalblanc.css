@@ -1955,7 +1955,7 @@ html {
       position: absolute;
       display: block;
       top: 10px;
-      right: 0;
+      right: 14px;
       width: 22px;
       height: 22px;
       background: url("img/icons/icon-close.svg");
@@ -2282,6 +2282,8 @@ html {
       max-width: 500px; }
       .modal-fullscreen-container.big-modal.donation-small .modal-fullscreen-item .modal-fullscreen-content .modal-flash-message {
         margin: 34px -31px 0 -31px; }
+  .modal-fullscreen-container.slider-modal .modal-fullscreen-item .modal-fullscreen-close {
+    right: 0; }
   .modal-fullscreen-container.slider-modal #front-card.modal-fullscreen-item {
     position: relative;
     max-width: 68em;

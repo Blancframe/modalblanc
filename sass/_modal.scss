@@ -190,7 +190,7 @@
             position: absolute;
             display: block;
             top: 10px;
-            right: 0;
+            right: 14px;
             width: 22px;
             height: 22px;
             background: url('img/icons/icon-close.svg');
@@ -490,21 +490,25 @@
     }
 
     &.slider-modal {
-        // margin: 2% auto;
-
-            #front-card.modal-fullscreen-item {
-                position: relative;
-                max-width: 68em;
-                margin: auto;
-                background-color: rgba(255, 255, 255, 0);
-
-                #modal-slider {
-                    position: absolute;
-                    top: 30px;
-                    left: 0;
-                    right: 0;
-                }
+        .modal-fullscreen-item {
+            .modal-fullscreen-close {
+                right: 0;
             }
+        }
+
+        #front-card.modal-fullscreen-item {
+            position: relative;
+            max-width: 68em;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0);
+
+            #modal-slider {
+                position: absolute;
+                top: 30px;
+                left: 0;
+                right: 0;
+            }
+        }
     }
 }
 

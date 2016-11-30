@@ -61,6 +61,8 @@ Modalblanc.prototype.close = function() {
     overlay.addEventListener(transPrefix.end, function() {
         this.remove();
         _this.settings.modalOpen = false;
+        // enable scroll
+        enableScroll();
     }, false);
 
     document.onkeyup = null;
@@ -181,7 +183,7 @@ function setEvents() {
 
 function build() {
     this.modalContainer = document.getElementsByClassName('modal-fullscreen-container');
-    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close">X</span>';
+    if (this.options.closeButton) this.closeButton = '<span class="modal-fullscreen-close"></span>';
 
     var contentSideOne = !this.options.slider ? contentType(this.options.content) : contentType('<div id="modal-slider"></div>');
 
@@ -226,6 +228,9 @@ function build() {
 
     StringAsNode(document.getElementById(modalId), modalTemplate);
     this.settings.modalOpen = true;
+
+    // disable scroll
+    disableScroll(modalId);
 
     if (this.options.slider) this.sliderInit('#modal-slider');
 
@@ -311,4 +316,21 @@ function keyboardActions() {
         }
     }
 }
+
+function disableScroll(id) {
+    var $body = document.getElementById(id),
+        windowWidth = window.innerWidth;
+    $body.style.width = windowWidth;
+    $body.classList.add('is-stopped-scrolling');
+}
+
+function enableScroll() {
+    var bodyId = document.getElementsByTagName('body'),
+        id = bodyId[0].id,
+        $body = document.getElementById(id);
+
+    $body.style.width = '';
+    $body.classList.remove('is-stopped-scrolling');
+}
+
 module.exports = Modalblanc;

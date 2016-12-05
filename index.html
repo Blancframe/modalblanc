@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Modalblanc Example</title>
+    <title>Modalblanc Examples</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="dist/docs.css">
@@ -74,11 +74,134 @@ const modalSlider = new Modalblanc({
 });
 </code></pre>
         </p>
+
         <p class="docs-p">
             <a href="#" class="docs-btn docs-btn-sec" id="openModalImages">
                 Modal as a slider
             </a>
         </p>
+
+        <h3 class="docs-3">Options</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Default</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">content</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">null</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">string</code>
+                    </td>
+                    <td>Content in the modal</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">animation</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">fade-in-out</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">string</code>
+                    </td>
+                    <td>Type of modal animation (fade-in-out, slide-in-right)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">closeButton</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">true</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">boolean</code>
+                    </td>
+                    <td>Show or hide the close button</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">sideTwo: content</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">null</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">string</code>
+                    </td>
+                    <td>Displays your content on the backside of the modal</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">sideTwo: animation</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">slide</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">string</code>
+                    </td>
+                    <td>Type of modal content animation (slide, scale)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">sideTwo: button</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">null</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">object</code>
+                    </td>
+                    <td>Custom elements (a, button, li e.g.) id always have to be modal-button-next and parent always front-card. Fix this on short term.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">sideTwo: button back</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">null</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">object</code>
+                    </td>
+                    <td>Custom elements (a, button, li e.g.) id always have to be modal-button-prev and parent always back-card. Fix this on short term.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">slider</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">optional</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">array</code>
+                    </td>
+                    <td>Enable photo slider</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code class="highlighter-rouge">autoPlaySlider</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">false</code>
+                    </td>
+                    <td>
+                        <code class="highlighter-rouge">boolean</code>
+                    </td>
+                    <td>Auto play photo slider when is active</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <script>
         const photos = [

@@ -11,7 +11,37 @@ a {
     text-decoration: none;
 }
 
-
 pre {
     overflow-y: scroll;
+}
+
+table {
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    thead {
+        tr {
+            font-size: 14px;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: #f2f2f2
+            }
+        }
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+        font-size: 13px;
+    }
 }

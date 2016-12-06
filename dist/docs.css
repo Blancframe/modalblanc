@@ -1792,8 +1792,29 @@ body {
 a {
   text-decoration: none; }
 
+pre {
+  overflow-y: scroll; }
+
+table {
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0; }
+  table thead tr {
+    font-size: 14px; }
+  table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; }
+  table th, table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 13px; }
+
 .docs-header {
-  padding: 80px 96px;
+  padding: 80px 20px;
   color: #fff;
   text-align: center;
   background-color: #243b55;
@@ -1809,8 +1830,8 @@ a {
     opacity: .7; }
 
 .docs-content {
-  max-width: 64rem;
-  padding: 2rem 6rem;
+  max-width: 800px;
+  padding: 20px 40px;
   margin: 0 auto;
   font-size: 1.1rem; }
   .docs-content h3.docs-h3 {
@@ -1833,8 +1854,11 @@ a {
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
   padding: 0.75rem 1rem; }
   .docs-btn.docs-btn-sec {
-    border-color: rgba(20, 30, 48, 0.2);
-    color: rgba(20, 30, 48, 0.7);
-    background-color: rgba(20, 30, 48, 0.08); }
+    border-color: rgba(36, 59, 85, 0.25);
+    color: rgba(36, 59, 85, 0.7);
+    background-color: rgba(36, 59, 85, 0.19); }
+    .docs-btn.docs-btn-sec:hover {
+      color: #fff;
+      background-color: rgba(36, 59, 85, 0.9); }
 
 /*# sourceMappingURL=docs.css.map */

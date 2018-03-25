@@ -9,7 +9,7 @@ var Template = require('./lib/template-engine');
 
 var Modalblanc = function () {
     if (!(this instanceof Modalblanc)) {
-      return new Modalblanc();
+        return new Modalblanc();
     }
 
     this.closeButton = null;
@@ -27,7 +27,7 @@ var Modalblanc = function () {
             button: null,
             buttonBack: null
         },
-      };
+    };
 
     this.settings = {};
 
@@ -116,8 +116,6 @@ Modalblanc.prototype._contentPrevious = function() {
 };
 
 Modalblanc.prototype.classEventListener = function(elm, callback) {
-    var _this = this;
-
     for (var i = 0; i < elm.length; i++) {
         elm[i].addEventListener('click', function() {
             callback();
@@ -132,17 +130,17 @@ function typeOfAnimation(type, typeClass) {
         },
         animationClass = animationTypes[type];
 
-        if (type === undefined) {
-            if (typeClass === 2) {
-                return animationTypes.slide[1];
-            } else {
-                return animationTypes.slide[0];
-            }
-        } else if (typeClass === 2) {
-            return animationClass[1];
+    if (type === undefined) {
+        if (typeClass === 2) {
+            return animationTypes.slide[1];
         } else {
-            return animationClass[0];
+            return animationTypes.slide[0];
         }
+    } else if (typeClass === 2) {
+        return animationClass[1];
+    } else {
+        return animationClass[0];
+    }
 }
 
 function transitionPrefix(elm) {
@@ -154,11 +152,11 @@ function transitionPrefix(elm) {
     };
 
     for (var name in transEndEventNames) {
-      if (elm.style[name] !== undefined) {
-        return {
-            end: transEndEventNames[name]
-        };
-      }
+        if (elm.style[name] !== undefined) {
+            return {
+                end: transEndEventNames[name]
+            };
+        }
     }
 }
 
@@ -254,12 +252,6 @@ function buildElement(buildOptions) {
 
 
 function buildButton(elm) {
-    var button,
-        computedButton,
-        computedButtonBack,
-        frontCard,
-        backCard;
-
     if (elm === null || elm === undefined) {
         if (document.getElementById('modal-button-next') || document.getElementById('modal-button-prev')) {
             return;
@@ -299,11 +291,11 @@ function contentType(contentValue) {
 }
 
 function addClass(selector, className) {
-    selector[0].classList.add(className)
+    selector[0].classList.add(className);
 }
 
 function removeClass(selector, className) {
-    selector[0].classList.remove(className)
+    selector[0].classList.remove(className);
 }
 
 function keyboardActions() {
@@ -314,7 +306,7 @@ function keyboardActions() {
         if (_this.settings.modalOpen && e.keyCode == 27) {
             _this.close();
         }
-    }
+    };
 }
 
 function disableScroll(id) {

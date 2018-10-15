@@ -12,7 +12,8 @@
     "watchify": "^3.6.1"
   },
   "scripts": {
-    "watch": "watchify index.js -d --s Modalblanc -o dist/modalblanc.js -v",
+    "watch": "yarn run watch-js && yarn run watch-scss",
+    "watch-js": "watchify index.js -d --s Modalblanc -o dist/modalblanc.js -v",
     "watch-scss": "sass --watch sass:dist",
     "build-debug": "browserify index.js -d --s Modalblanc > dist/modalblanc.js",
     "build-min": "browserify index.js --s Modalblanc | uglifyjs -c > dist/modalblanc.min.js",

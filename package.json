@@ -2,26 +2,19 @@
   "name": "modalblanc",
   "version": "1.1.1",
   "description": "A simpel modal",
-  "main": "index.js",
-  "dependencies": {},
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
   "devDependencies": {
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3",
-    "browserify": "^12.0.1",
-    "uglify-js": "^2.6.1",
-    "watchify": "^3.6.1"
+    "@parcel/packager-ts": "^2.9.3",
+    "@parcel/transformer-typescript-types": "^2.9.3",
+    "parcel": "^2.9.3",
+    "typescript": "^5.2.2"
   },
   "scripts": {
-    "watch": "watchify index.js -d --s Modalblanc -o dist/modalblanc.js -v",
-    "watch-scss": "sass --watch sass:dist",
-    "build-debug": "browserify index.js -d --s Modalblanc > dist/modalblanc.js",
-    "build-min": "browserify index.js --s Modalblanc | uglifyjs -c > dist/modalblanc.min.js",
-    "build-js": "npm run build-debug && npm run build-min",
-    "build-css": "sass sass/modalblanc.scss dist/modalblanc.css",
-    "build-files": "npm run build-js && npm run build-css",
-    "test": "npm run test-phantom && npm run test-mocha",
-    "test-phantom": "make test",
-    "test-mocha": "mocha-phantomjs testRunner.html"
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "start:demo": "parcel demo/index.html"
   },
   "repository": {
     "type": "git",

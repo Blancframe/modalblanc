@@ -1,6 +1,7 @@
 node_modules/
 .sass-cache/
 sass/lib/*
+dist/*
 *.map
 *.DS_Store
 npm-debug.log

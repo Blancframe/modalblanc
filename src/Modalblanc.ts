@@ -2,6 +2,7 @@ type Animation = "fade-in-out";
 
 interface Settings {
   animation: Animation;
+  isOpen?: boolean;
 }
 
 export class Modalblanc {
@@ -14,6 +15,19 @@ export class Modalblanc {
   }
 
   open() {
-    console.info("open modal");
+    if (this.settings.isOpen) return;
+
+    this.build.call(this);
+    this.setEvents();
+  }
+
+  build() {
+    // build modal
+    console.info("build modal");
+  }
+
+  setEvents() {
+    // set events
+    console.info("set events modal");
   }
 }
